@@ -18,18 +18,29 @@ Part 1
 
 q'->p' 
 qvp'   implication
+
 p'vq   commutative
+
 p->q   implication
 
 (p->r) ^ (q->r) <=> (p v q) -> r
+
 (p'vr)^(q'vr)  implication
+
 (rvp')^(rvq')  commutative
+
 rv(p'^q')      distributive
+
 (p'^q')vr      commutative
+
 (pvq)'vr       de morgan's
+
 (pvq)->r       implication
 
 (Ǝx)A(x) ^ (Ǝx)B(x) -> (Ǝx)(A(x) ^ B(x))
+
 x is animals
+
 A(x) is a dog
+
 B(x) is a cat
