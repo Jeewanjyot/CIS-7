@@ -1,0 +1,71 @@
+Part 1
+if math is easy then the homework is done and if its sunny camping is fun.
+
+(S ^ H) -> (C v M)
+
+Part 2
+
+(¬B → ¬A) → ((¬B → A) → B)
+
+ | A | B | ¬A | ¬B | ¬B → ¬A | ¬B → A | (¬B → A) → B | (¬B → ¬A) → ((¬B → A) → B) |
+ |---|---|----|----|---------|--------|--------------|----------------------------|
+ | T | T |  F |  F |    T    |   T    |      T       |             T              |
+ |---|---|----|----|---------|--------|--------------|----------------------------|
+ | T | F |  F |  T |    F    |   T    |      F       |             T              |
+ |---|---|----|----|---------|--------|--------------|----------------------------|
+ | F | T |  T |  F |    T    |   T    |      T       |             T              |
+ |---|---|----|----|---------|--------|--------------|----------------------------|
+ | F | F |  T |  T |    T    |   F    |      T       |             T              |
+ tautology
+ 
+ ((A → B)∧(B → ¬A)) → A
+
+ | A | B | ¬A | A → B | B → ¬A | (A → B)∧(B → ¬A) | ((A → B)∧(B → ¬A)) → A |
+ |---|---|----|-------|--------|------------------|------------------------|
+ | T | T |  F |   T   |   F    |        F         |            T           |
+ |---|---|----|-------|--------|------------------|------------------------|
+ | T | F |  F |   F   |   T    |        F         |            T           |
+ |---|---|----|-------|--------|------------------|------------------------|
+ | F | T |  T |   T   |   T    |        T         |            F           |
+ |---|---|----|-------|--------|------------------|------------------------|
+ | F | F |  T |   T   |   T    |        T         |            F           |
+ neither
+
+Part 3
+
+(p ^ q) -> r, p -> (q -> r)
+(p ^ q)' v r, p' v ('q v r) implication x3
+p' v q' v r, p' v 'q v r    de morgan's law and assosiative
+
+(q ∨r ) → p, (q → p)∧(r → p)
+(q ∨r )' v p, (q' v p)∧(r' v p)       implication x3
+(q' ^ r') v p, (q' v p)∧(r' v p)      de morgan's law 
+p v (q' ^ r'), (q' v p)∧(r' v p)      associative
+(p v q')^(p v r'), (q' v p)∧(r' v p)  distributive
+(q' v p)∧(r' v p), (q' v p)∧(r' v p)  associative  
+
+Part 4
+
+If there is a traveler and a city and a resident lives in the city then the traveler loves 
+that city and the resident does not love that city.
+
+∀x∀y(Traveler(x)^City(y)^Lives(x,y)->¬Loves(x,y))
+
+Part 5
+
+p → (q ∧r ), s → r , r → p
+
+s            assump
+s -> r       prem
+r            mpp
+r -> p       prem
+p            mpp
+p -> (q ^ r) pre
+q ^ r        mpp
+q            it cant be any other way
+s -> q       implication
+
+¬(r ∨ s), ¬p → s, p → q
+
+p            assump
+q            prem
