@@ -1,0 +1,93 @@
+#include "stdafx.h"
+#include <iostream>
+#include <chrono>
+using namespace std;
+using namespace std::chrono;
+
+int GCD(int num1, int num2);
+
+int main()
+{
+	int num1 = 0;
+	int num2 = 0;
+	int gcd = 0;
+	int temp = 0;
+	char choice = 'Y';
+
+
+	while (choice == 'Y')
+	{
+		cout << "Input 2 positive integers\n: ";
+		cin >> num1;
+		while (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(80, '\n');
+			cout << "You did not enter a positive integer. Try again\n:";
+			cin >> num1;
+		}
+
+		cout << ": ";
+		cin.ignore();
+		cin >> num2;
+		while (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(80, '\n');
+			cout << "You did not enter a positive integer. Try again\n:";
+			cin >> num2;
+		}
+		
+		if (num1 < 0 || num2 < 0)
+		{
+			cout << "You did not enter a positive integer. Try again\n:";
+			cin >> num1;
+			cout << ": ";
+			cin.ignore();
+			cin >> num2;
+		}
+        
+		if (num1 < num2)
+		{
+			temp = num1;
+			num1 = num2;
+			num2 = temp;
+		}
+		auto start = high_resolution_clock::now();
+		gcd = GCD(num1, num2);
+
+		auto stop = high_resolution_clock::now();
+
+		long double duration = duration_cast<nanoseconds>(stop - start).count();
+		
+		cout << "The gcd is : " << gcd << "\nThe time taken was : " << duration << " nanoseconds." << endl;
+
+		cout << "Would you like to do 2 other numbers <Y/N> : ";
+		cin >> choice;
+		
+		if (toupper(choice) != 'Y' || toupper(choice) != 'N')
+		{
+			cout << "That is not a valid answer. Try again : ";
+			cin >> choice;
+		}
+		
+		choice = toupper(choice);
+
+		system("cls");
+	}
+	return 0;
+}
+
+int GCD(int num1, int num2)
+{
+	int x;
+	x = num1 % num2;
+
+	if (x == 0)
+		return num2;
+	
+	else
+		GCD(num2, x);
+	
+	return x;
+}
