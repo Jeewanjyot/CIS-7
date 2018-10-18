@@ -1,0 +1,89 @@
+/*
+Write a program that prints out step-by-step instructions for completing the Tower of Hanoi.
+
+Requirements:
+[ ] Asks the user for 1 integer indicating the number of disks to use.
+Then have the program solve the Tower of Hanoi problem recursively.
+[ ] Have the program print out each move (for example: "Move disk from tower A to tower C")
+[ ] Next have the program print out a visual representation of each tower in between moves.
+For instance, after the first move, the console could show:
+Tower A: -,2,3 Tower B: -,-,- Tower C: -,-,1 Move disk 1 to Tower C
+[ ] After each move, wait for user input and clear the screen
+*/
+
+#include "stdafx.h"
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+void TOH(int disks, char Sour, char Aux, char Des);
+// factorial function
+int takeFact(int disks);
+
+int main()
+{
+	int disks;
+	bool run = true;
+	char choice;
+
+	while (run)
+	{
+		cout << "I will have the factorial of the number of disks at the end of the output." << endl;
+		cout << "Enter the number of disks: ";
+		cin >> disks;
+		while (disks < 0)
+		{
+			cout << "That is not a positive integer. Try again : ";
+			cin >> disks;
+		}
+
+		// this is the line for the factorial
+		cout << "Factorial of " << disks << " = " << takeFact(disks) << endl;
+		cout << "Wow that will take " << pow(2, disks) - 1 << " moves." << endl;
+		system("pause");
+
+		TOH(disks, 'A', 'B', 'C');
+
+		cout << "Would you like to try a different number of disks? <Y/N> : ";
+		cin >> choice;
+
+		while (toupper(choice) != 'Y' && toupper(choice) != 'N')
+		{
+			cout << "That is not one of the two options. Try again : ";
+			cin >> choice;
+		}
+
+		if (toupper(choice) == 'N')
+		{
+			cout << "Have a nice day" << endl;
+			break;
+		}
+
+		system("cls");
+	}
+	return 0;
+}
+
+void TOH(int disks, char Sour, char Aux, char Des)
+{
+	if (disks == 1)
+	{
+		cout << "Move Disk " << disks << " from " << Sour << " to " << Des << endl;
+		return;
+	}
+
+	TOH(disks - 1, Sour, Des, Aux);
+	cout << "Move Disk " << disks << " from " << Sour << " to " << Des << endl;
+
+	TOH(disks - 1, Aux, Sour, Des);
+}
+
+// factorial function
+int takeFact(int disks)
+{
+	if (disks > 1)
+		return disks * takeFact(disks - 1);
+	else
+		return 1;
+}
